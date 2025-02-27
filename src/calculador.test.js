@@ -5,3 +5,4 @@ describe("totalizar", () => {
     expect(totalizar(20, 3)).toEqual(60);
   });
 });
+
