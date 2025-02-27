@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html xml:lang="es">
   <head>
-    <title>Sumador</title>
+    <title>Totalizador de ventas</title>
   </head>
   <body>
-    <h1>Sumador</h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
-    </form>
-    <div id="resultado-div"></div>
+    <h2>Calculadora de Precio</h2>
 
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
+    <label>Cantidad de ítems:</label>
+    <input type="number" id="cantidad" value="1"><br><br>
+
+    <label>Precio por ítem:</label>
+    <input type="number" id="precio" step="0.01" value="0"><br><br>
+
+    <button onclick="calcularTotal()">Totalizar</button>
+
+    <h3>Precio Neto: <span id="precio-neto-text">0 x 0</span> = <span id="precio-neto">$0.00</span></h3>
+    <h3>Precio Total: <span id="total">$0.00</span></h3>
+</body>
 </html>
