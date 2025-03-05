@@ -13,6 +13,8 @@ function sacarPorcentaje(a, b) {
     {
         return 120 * 0.08;
     }
+
+    return a * b;
   }
   
   export default sacarPorcentaje;

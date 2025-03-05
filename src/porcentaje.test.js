@@ -17,3 +17,9 @@ describe("sacarPorcentaje", () => {
       expect(sacarPorcentaje(120, (8.00/100))).toEqual(9.6);
     });
   });
+
+  describe("sacarPorcentaje", () => {
+    it("deberia sacar el porcentaje de un valor de cualquier estado", () => {
+      expect(sacarPorcentaje(120, (4.00/100))).toEqual(4.8);
+    });
+  });
