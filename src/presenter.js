@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const impuestos = {
       CA: 8.25,
       TX: 6.25,
-      NY: 4.00,
-      FL: 7.00
+      NV: 8.00,
+      AL: 4.00,
+      UT: 6.65
   };
 
   const estadoSelect = document.getElementById("estado");
