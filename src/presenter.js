@@ -1,46 +1,64 @@
-import totalizar from './calculador.js';
+// Importar la función específica de sumador.js
+import sumarImpuesto from './sumador.js';
 
 function calcularTotal() {
   // Obtener los valores de los inputs
   const cantidad = parseFloat(document.getElementById('cantidad').value);
   const precio = parseFloat(document.getElementById('precio').value);
+  const estado = document.getElementById('estado').value;
 
- 
-  // Calcular el precio neto usando la función del calculador
-  const precioNeto = totalizar(cantidad, precio);
+  // Calcular el precio neto (cantidad * precio)
+  const precioNeto = cantidad * precio;
 
-  // Mostrar el precio neto y el total
+  // Definir las tasas de impuesto por estado
+  const impuestos = {
+    CA: 8.25,
+    TX: 6.25,
+    NV: 8.00,
+    AL: 4.00,
+    UT: 6.65
+  };
+
+  // Obtener la tasa de impuesto para el estado seleccionado
+  const tasaImpuesto = impuestos[estado] || 0;
+
+  // Calcular el impuesto usando la función sumarImpuesto
+  const impuesto = sumarImpuesto(precioNeto, tasaImpuesto) - precioNeto;
+
+  // Mostrar los resultados en la página
   document.getElementById('precio-neto-text').textContent = `${cantidad} x ${precio}`;
   document.getElementById('precio-neto').textContent = `$${precioNeto.toFixed(2)}`;
-  document.getElementById('total').textContent = `$${precioNeto.toFixed(2)}`;
+  document.getElementById('estado-seleccionado').textContent = estado;
+  document.getElementById('impuesto-rate').textContent = tasaImpuesto.toFixed(2);
+  document.getElementById('impuesto-valor').textContent = `${impuesto.toFixed(2)}`; // Actualizar el valor del impuesto
+  document.getElementById('total').textContent = `$${(precioNeto + impuesto).toFixed(2)}`;
+}
+
+// Función para actualizar el porcentaje de impuesto cuando se cambia el estado
+function actualizarImpuesto() {
+  const estado = document.getElementById('estado').value;
+
+  // Definir las tasas de impuesto por estado
+  const impuestos = {
+    CA: 8.25,
+    TX: 6.25,
+    NV: 8.00,
+    AL: 4.00,
+    UT: 6.65
+  };
+
+  // Obtener la tasa de impuesto para el estado seleccionado
+  const tasaImpuesto = impuestos[estado] || 0;
+
+  // Actualizar el porcentaje de impuesto en la pantalla
+  document.getElementById('impuesto-rate').textContent = tasaImpuesto.toFixed(2);
 }
 
 // Asignar la función al objeto window para que esté disponible globalmente
 window.calcularTotal = calcularTotal;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const impuestos = {
-      CA: 8.25,
-      TX: 6.25,
-      NV: 8.00,
-      AL: 4.00,
-      UT: 6.65
-  };
+// Escuchar cambios en el combobox de estado
+document.getElementById('estado').addEventListener('change', actualizarImpuesto);
 
-  const estadoSelect = document.getElementById("estado");
-  const impuestoRateSpan = document.getElementById("impuesto-rate");
-
-  function actualizarImpuesto() {
-      const estado = estadoSelect.value;
-      const impuestoRate = impuestos[estado] || 0;
-
-      // Mostrar solo el porcentaje de impuestos
-      impuestoRateSpan.textContent = impuestoRate.toFixed(2);
-  }
-
-  // Escuchar cambios en el combobox de estado
-  estadoSelect.addEventListener("change", actualizarImpuesto);
-
-  // Ejecutar al inicio para mostrar el impuesto de CA por defecto
-  actualizarImpuesto();
-});
+// Ejecutar al inicio para mostrar el impuesto de CA por defecto
+actualizarImpuesto();
