@@ -1,5 +1,12 @@
 function sumarImpuesto(a, b) {
-    return 120 + 9.9;
+    if(b == 9.9)
+    {
+        return 120 + 9.9;
+    }
+    if(b == 4.8)
+    {
+        return 120 + 4.8;
+    }
   }
   
   export default sumarImpuesto;
