@@ -12,6 +12,15 @@
     <label>Precio por ítem:</label>
     <input type="number" id="precio" step="0.01" value="0"><br><br>
 
+    <label>Código de estado:</label>
+    <select id="estado">
+        <option value="CA"select>CA</option>
+        <option value="AL">AL</option>
+        <option value="TX">TX</option>
+        <option value="NV">NV</option>
+        <option value="UT">UT</option>
+    </select><br><br>
+
     <button onclick="calcularTotal()">Totalizar</button>
 
     <h3>Precio Neto: <span id="precio-neto-text">0 x 0</span> = <span id="precio-neto">$0.00</span></h3>
