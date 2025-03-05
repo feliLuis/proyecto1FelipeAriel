@@ -7,6 +7,7 @@ function sumarImpuesto(a, b) {
     {
         return 120 + 4.8;
     }
+    return a + b;
   }
   
   export default sumarImpuesto;

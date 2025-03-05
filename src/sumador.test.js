@@ -11,3 +11,9 @@ describe("sumarImpuesto", () => {
       expect(sumarImpuesto(120, 4.8)).toEqual(124.8);
     });
   });
+
+  describe("sumarImpuesto", () => {
+    it("deberia sumar al precio total el impuesto de cualquier estado", () => {
+      expect(sumarImpuesto(120, 7.5)).toEqual(127.5);
+    });
+  });
