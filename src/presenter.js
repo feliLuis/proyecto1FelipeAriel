@@ -1,5 +1,14 @@
-// Importar la función específica de sumador.js
-import sumarImpuesto from './sumador.js';
+// Importar la función calcularImpuestoYTotal
+import calcularImpuestoYTotal from './sumador.js';
+
+// Definir las tasas de impuesto por estado
+const impuestos = {
+  CA: 8.25,
+  TX: 6.25,
+  NV: 8.00,
+  AL: 4.00,
+  UT: 6.65
+};
 
 function calcularTotal() {
   // Obtener los valores de los inputs
@@ -10,42 +19,21 @@ function calcularTotal() {
   // Calcular el precio neto (cantidad * precio)
   const precioNeto = cantidad * precio;
 
-  // Definir las tasas de impuesto por estado
-  const impuestos = {
-    CA: 8.25,
-    TX: 6.25,
-    NV: 8.00,
-    AL: 4.00,
-    UT: 6.65
-  };
-
-  // Obtener la tasa de impuesto para el estado seleccionado
-  const tasaImpuesto = impuestos[estado] || 0;
-
-  // Calcular el impuesto usando la función sumarImpuesto
-  const impuesto = sumarImpuesto(precioNeto, tasaImpuesto) - precioNeto;
+  // Calcular el impuesto y el precio total usando calcularImpuestoYTotal
+  const { impuesto, precioTotal } = calcularImpuestoYTotal(precioNeto, estado);
 
   // Mostrar los resultados en la página
   document.getElementById('precio-neto-text').textContent = `${cantidad} x ${precio}`;
   document.getElementById('precio-neto').textContent = `$${precioNeto.toFixed(2)}`;
   document.getElementById('estado-seleccionado').textContent = estado;
-  document.getElementById('impuesto-rate').textContent = tasaImpuesto.toFixed(2);
+  document.getElementById('impuesto-rate').textContent = impuestos[estado].toFixed(2);
   document.getElementById('impuesto-valor').textContent = `${impuesto.toFixed(2)}`; // Actualizar el valor del impuesto
-  document.getElementById('total').textContent = `$${(precioNeto + impuesto).toFixed(2)}`;
+  document.getElementById('total').textContent = `$${precioTotal.toFixed(2)}`;
 }
 
 // Función para actualizar el porcentaje de impuesto cuando se cambia el estado
 function actualizarImpuesto() {
   const estado = document.getElementById('estado').value;
-
-  // Definir las tasas de impuesto por estado
-  const impuestos = {
-    CA: 8.25,
-    TX: 6.25,
-    NV: 8.00,
-    AL: 4.00,
-    UT: 6.65
-  };
 
   // Obtener la tasa de impuesto para el estado seleccionado
   const tasaImpuesto = impuestos[estado] || 0;
