@@ -11,3 +11,9 @@ describe("sacarPorcentaje", () => {
       expect(sacarPorcentaje(120, (6.65/100))).toEqual(7.98);
     });
   });
+
+  describe("sacarPorcentaje", () => {
+    it("deberia sacar el porcentaje de un valor con estado NV", () => {
+      expect(sacarPorcentaje(120, (8.00/100))).toEqual(9.6);
+    });
+  });
