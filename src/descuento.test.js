@@ -33,4 +33,9 @@ describe('Pruebas para la funcionalidad de descuento', () => {
     const precioConDescuento = aplicarDescuento(precioNeto);
     expect(precioConDescuento).toBe(2850); // 3000 - (5% de 3000) = 2850
   });
+  test('Debería aplicar un descuento adicional del 5% cuando el precio neto es mayor a 3000', () => {
+    const precioNeto = 3500;
+    const precioConDescuento = aplicarDescuento(precioNeto);
+    expect(precioConDescuento).toBe(3325); // 3500 - (5% de 3500) = 3325
+  });
 });
