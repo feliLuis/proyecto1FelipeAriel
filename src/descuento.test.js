@@ -22,5 +22,9 @@ describe('Pruebas para la funcionalidad de descuento', () => {
     expect(precioConDescuento).toBe(1455); // 1500 - (3% de 1500) = 1455
   });
 
-
+  test('Debería manejar correctamente el precio neto igual a 0', () => {
+    const precioNeto = 0;
+    const precioConDescuento = aplicarDescuento(precioNeto);
+    expect(precioConDescuento).toBe(0); // No se aplica descuento
+  });
 });
