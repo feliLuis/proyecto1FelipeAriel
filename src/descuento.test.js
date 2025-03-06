@@ -38,4 +38,10 @@ describe('Pruebas para la funcionalidad de descuento', () => {
     const precioConDescuento = aplicarDescuento(precioNeto);
     expect(precioConDescuento).toBe(3325); // 3500 - (5% de 3500) = 3325
   });
+
+  test('Debería aplicar un descuento adicional del 10% cuando el precio neto es 7000', () => {
+    const precioNeto = 7000;
+    const precioConDescuento = aplicarDescuento(precioNeto);
+    expect(precioConDescuento).toBe(6300); // 7000 - (10% de 7000) = 6300
+  });
 });
