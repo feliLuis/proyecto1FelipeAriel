@@ -1,19 +1,30 @@
-import sumarImpuesto from "./sumador.js";
+import calcularImpuestoYTotal from "./sumador.js";
 
-describe("sumarImpuesto", () => {
-  it("deberia sumar al precio total el impuesto del estado CA", () => {
-    expect(sumarImpuesto(120, 9.9)).toEqual(129.9);
+describe("calcularImpuestoYTotal", () => {
+  it("debería calcular el impuesto y el precio total para el estado CA", () => {
+    const precioNeto = 120;
+    const estado = "CA"; // Tasa de impuesto para CA: 8.25%
+    const resultado = calcularImpuestoYTotal(precioNeto, estado);
+
+    // Verificar el precio total
+    expect(resultado.precioTotal).toBeCloseTo(129.9); // 120 + (120 * 8.25%) = 129.9
+  });
+
+  it("debería calcular el impuesto y el precio total para el estado AL", () => {
+    const precioNeto = 120;
+    const estado = "AL"; // Tasa de impuesto para AL: 4.00%
+    const resultado = calcularImpuestoYTotal(precioNeto, estado);
+
+    // Verificar el precio total
+    expect(resultado.precioTotal).toBeCloseTo(124.8); // 120 + (120 * 4.00%) = 124.8
+  });
+
+  it("debería calcular el impuesto y el precio total para un estado no definido", () => {
+    const precioNeto = 120;
+    const estado = "XX"; // Estado no definido, tasa de impuesto: 0%
+    const resultado = calcularImpuestoYTotal(precioNeto, estado);
+
+    // Verificar el precio total
+    expect(resultado.precioTotal).toBe(120); // 120 + (120 * 0%) = 120
   });
 });
-
-describe("sumarImpuesto", () => {
-    it("deberia sumar al precio total el impuesto del estado AL", () => {
-      expect(sumarImpuesto(120, 4.8)).toEqual(124.8);
-    });
-  });
-
-  describe("sumarImpuesto", () => {
-    it("deberia sumar al precio total el impuesto de cualquier estado", () => {
-      expect(sumarImpuesto(120, 7.5)).toEqual(127.5);
-    });
-  });

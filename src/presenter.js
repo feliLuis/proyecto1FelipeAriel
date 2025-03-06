@@ -35,18 +35,18 @@ function calcularTotal() {
 function actualizarImpuesto() {
   const estado = document.getElementById('estado').value;
 
-  // Obtener la tasa de impuesto para el estado seleccionado
+  
   const tasaImpuesto = impuestos[estado] || 0;
 
-  // Actualizar el porcentaje de impuesto en la pantalla
+  // Actualizar el porcentaje de impuesto
   document.getElementById('impuesto-rate').textContent = tasaImpuesto.toFixed(2);
 }
 
-// Asignar la función al objeto window para que esté disponible globalmente
+
 window.calcularTotal = calcularTotal;
 
-// Escuchar cambios en el combobox de estado
+
 document.getElementById('estado').addEventListener('change', actualizarImpuesto);
 
-// Ejecutar al inicio para mostrar el impuesto de CA por defecto
+
 actualizarImpuesto();

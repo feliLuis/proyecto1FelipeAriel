@@ -1,3 +1,4 @@
+// calculador.js
 function calcularImpuestoYTotal(precioNeto, estado) {
     // Definir las tasas de impuesto por estado
     const impuestos = {
@@ -5,7 +6,7 @@ function calcularImpuestoYTotal(precioNeto, estado) {
       TX: 6.25,
       NV: 8.00,
       AL: 4.00,
-      UT: 6.65
+      UT: 6.65,
     };
   
     // Obtener la tasa de impuesto para el estado seleccionado
@@ -20,7 +21,7 @@ function calcularImpuestoYTotal(precioNeto, estado) {
     // Devolver el impuesto y el precio total
     return {
       impuesto: impuesto,
-      precioTotal: precioTotal
+      precioTotal: precioTotal,
     };
   }
   
