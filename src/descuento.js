@@ -16,6 +16,12 @@ export function aplicarDescuento(precioNeto) {
         descuento=0;
         descuento = 0.10; // 10%
       }
+
+      if (precioNeto >= 10000) {
+        descuento=0;
+        descuento = 0.15; // 15%
+      }
+    
     
     return precioNeto * (1 - descuento);
   }
