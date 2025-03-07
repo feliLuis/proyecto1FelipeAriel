@@ -1,4 +1,4 @@
-export function aplicarDescuento(precioNeto) {
+export default function aplicarDescuento(precioNeto) {
     let descuento = 0;
   
     // Aplicar descuento del 3% 

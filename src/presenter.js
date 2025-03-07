@@ -1,5 +1,6 @@
 // Importar la función calcularImpuestoYTotal
 import calcularImpuestoYTotal from './sumador.js';
+import aplicarDescuento from './descuento.js';
 
 // Definir las tasas de impuesto por estado
 const impuestos = {
@@ -19,8 +20,14 @@ function calcularTotal() {
   // Calcular el precio neto (cantidad * precio)
   const precioNeto = cantidad * precio;
 
+  // Calcular el precio con descuento
+  const precioConDescuento = aplicarDescuento(precioNeto);
+
   // Calcular el impuesto y el precio total usando calcularImpuestoYTotal
-  const { impuesto, precioTotal } = calcularImpuestoYTotal(precioNeto, estado);
+  const { impuesto, precioTotal } = calcularImpuestoYTotal(precioConDescuento, estado);
+
+  // Calcular el descuento aplicado
+  const descuento = precioNeto - precioConDescuento;
 
   // Mostrar los resultados en la página
   document.getElementById('precio-neto-text').textContent = `${cantidad} x ${precio}`;
@@ -29,24 +36,23 @@ function calcularTotal() {
   document.getElementById('impuesto-rate').textContent = impuestos[estado].toFixed(2);
   document.getElementById('impuesto-valor').textContent = `${impuesto.toFixed(2)}`; // Actualizar el valor del impuesto
   document.getElementById('total').textContent = `$${precioTotal.toFixed(2)}`;
+
+  // Mostrar el descuento
+  document.getElementById('descuento-porcentaje').textContent = `${(descuento / precioNeto * 100).toFixed(0)}%`;
+  document.getElementById('descuento-valor').textContent = `$${descuento.toFixed(2)}`;
 }
 
 // Función para actualizar el porcentaje de impuesto cuando se cambia el estado
 function actualizarImpuesto() {
   const estado = document.getElementById('estado').value;
-
-  
   const tasaImpuesto = impuestos[estado] || 0;
 
   // Actualizar el porcentaje de impuesto
   document.getElementById('impuesto-rate').textContent = tasaImpuesto.toFixed(2);
 }
 
-
 window.calcularTotal = calcularTotal;
 
-
 document.getElementById('estado').addEventListener('change', actualizarImpuesto);
-
 
 actualizarImpuesto();

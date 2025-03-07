@@ -24,8 +24,9 @@
     <button onclick="calcularTotal()">Totalizar</button>
 
     <h3>Precio Neto: <span id="precio-neto-text">0 x 0</span> = <span id="precio-neto">$0.00</span></h3>
+    <h3>Descuento (<span id="descuento-porcentaje">0%</span>): $<span id="descuento-valor">0.00</span></h3>
     <h3>Impuesto para <span id="estado-seleccionado">CA</span> (%<span id="impuesto-rate">8.25</span>): $<span id="impuesto-valor">xx,xx</span></h3>
-    <h3>Precio Total: <span id="total">$0.00</span></h3>
+    <h3>Precio Total (descuento e impuesto): <span id="total">$0.00</span></h3>
 
     <!-- Incluir los scripts como módulos -->
     <script type="module" src="./src/presenter.js"></script>
