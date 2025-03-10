@@ -4,6 +4,7 @@ function calcularDescuentoYImpuesto(precioBase, categoria) {
         "alimentos": { impuesto: 0, descuento: 2 },
         "bebidas-alcoholicas": { impuesto: 7, descuento: 0 },
         "material-de-escritorio": { impuesto: 0, descuento: 1.5 },
+        "muebles": { impuesto: 3, descuento: 0 },
       };
     
     // Extraemos los valores
