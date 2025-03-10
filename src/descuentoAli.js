@@ -6,6 +6,8 @@ function calcularDescuentoYImpuesto(precioBase, categoria) {
         "material-de-escritorio": { impuesto: 0, descuento: 1.5 },
         "muebles": { impuesto: 3, descuento: 0 },
         "electronicos": { impuesto: 4, descuento: 1 },
+        "vestimenta": { impuesto: 2, descuento: 0 },
+        "varios": { impuesto: 0, descuento: 0 },
       };
     
     // Extraemos los valores

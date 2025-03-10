@@ -20,4 +20,19 @@ describe("calcularDescuentoYImpuesto", () => {
     const resultado = calcularDescuentoYImpuesto(100, "muebles");
     expect(resultado).toEqual({ impuestoAdicional: 3, descuentoAdicional: 0 });
   });
+
+  it("debería calcular el impuesto y descuento para Electrónicos", () => {
+    const resultado = calcularDescuentoYImpuesto(100, "electronicos");
+    expect(resultado).toEqual({ impuestoAdicional: 4, descuentoAdicional: 1 });
+  });
+
+  it("debería calcular el impuesto y descuento para Vestimenta", () => {
+    const resultado = calcularDescuentoYImpuesto(100, "vestimenta");
+    expect(resultado).toEqual({ impuestoAdicional: 2, descuentoAdicional: 0 });
+  });
+
+  it("debería calcular el impuesto y descuento para Varios", () => {
+    const resultado = calcularDescuentoYImpuesto(100, "varios");
+    expect(resultado).toEqual({ impuestoAdicional: 0, descuentoAdicional: 0 });
+  });
 });
