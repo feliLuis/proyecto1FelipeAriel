@@ -1,6 +1,6 @@
 
 
-import { aplicarDescuento } from "./descuento.js";
+import aplicarDescuento from "./descuento.js";
 
 describe('Pruebas para la funcionalidad de descuento', () => {
   test('Debería aplicar un descuento del 3% cuando el precio neto es 1000', () => {
