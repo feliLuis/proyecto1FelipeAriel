@@ -1,5 +1,3 @@
-
-
 import aplicarDescuento from "./descuento.js";
 
 describe('Pruebas para la funcionalidad de descuento', () => {

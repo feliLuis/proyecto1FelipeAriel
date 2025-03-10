@@ -1,38 +1,45 @@
-import calcularDescuentoYImpuesto from "./descuentoAli.js";
+import aplicarDescuentoAli from './descuentoAli';
 
-describe("calcularDescuentoYImpuesto", () => {
-  it("debería calcular el impuesto y descuento para Alimentos", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "alimentos");
-    expect(resultado).toEqual({ impuestoAdicional: 0, descuentoAdicional: 2 });
-  });
+describe("Pruebas de aplicarDescuentoAli", () => {
+    
+    test("Debe aplicar 2% de descuento a Alimentos", () => {
+        expect(aplicarDescuentoAli(100, "Alimentos")).toBeCloseTo(98);
+    });
 
-  it("debería calcular el impuesto y descuento para Bebidas alcohólicas", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "bebidas-alcoholicas");
-    expect(resultado).toEqual({ impuestoAdicional: 7, descuentoAdicional: 0 });
-  });
+    test("Debe aplicar 0% de descuento a Bebidas Alcohólicas", () => {
+        expect(aplicarDescuentoAli(100, "BebidasAlcolicas")).toBe(100);
+    });
 
-  it("debería calcular el impuesto y descuento para Material de escritorio", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "material-de-escritorio");
-    expect(resultado).toEqual({ impuestoAdicional: 0, descuentoAdicional: 1.5 });
-  });
+    test("Debe aplicar 1.5% de descuento a Materiales de Escritorio", () => {
+        expect(aplicarDescuentoAli(100, "MaterialesEscritorio")).toBeCloseTo(98.5);
+    });
 
-  it("debería calcular el impuesto y descuento para Muebles", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "muebles");
-    expect(resultado).toEqual({ impuestoAdicional: 3, descuentoAdicional: 0 });
-  });
+    test("Debe aplicar 0% de descuento a Muebles", () => {
+        expect(aplicarDescuentoAli(100, "Muebles")).toBe(100);
+    });
 
-  it("debería calcular el impuesto y descuento para Electrónicos", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "electronicos");
-    expect(resultado).toEqual({ impuestoAdicional: 4, descuentoAdicional: 1 });
-  });
+    test("Debe aplicar 1% de descuento a Electrónicos", () => {
+        expect(aplicarDescuentoAli(100, "Electronicos")).toBeCloseTo(99);
+    });
 
-  it("debería calcular el impuesto y descuento para Vestimenta", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "vestimenta");
-    expect(resultado).toEqual({ impuestoAdicional: 2, descuentoAdicional: 0 });
-  });
+    test("Debe aplicar 0% de descuento a Vestimenta", () => {
+        expect(aplicarDescuentoAli(100, "Vestimenta")).toBe(100);
+    });
 
-  it("debería calcular el impuesto y descuento para Varios", () => {
-    const resultado = calcularDescuentoYImpuesto(100, "varios");
-    expect(resultado).toEqual({ impuestoAdicional: 0, descuentoAdicional: 0 });
-  });
+    test("Debe aplicar 0% de descuento a Varios", () => {
+        expect(aplicarDescuentoAli(100, "Varios")).toBe(100);
+    });
+
+    test("Debe manejar una categoría desconocida devolviendo el mismo precio", () => {
+        expect(aplicarDescuentoAli(100, "RopaDeLujo")).toBe(100);
+    });
+
+    test("Debe manejar un precio de 0 devolviendo 0", () => {
+        expect(aplicarDescuentoAli(0, "Alimentos")).toBe(0);
+    });
+
+    test("Debe manejar valores negativos correctamente", () => {
+        expect(aplicarDescuentoAli(-100, "Electronicos")).toBeCloseTo(-99);
+    });
+
 });
